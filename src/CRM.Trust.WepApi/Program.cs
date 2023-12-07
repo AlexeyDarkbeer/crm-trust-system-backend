@@ -8,6 +8,7 @@ builder.Services.AddCoreContext(configuration);
 builder.Services.AddScoringContext(configuration);
 
 builder.Services.AddApplicationMappings();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
