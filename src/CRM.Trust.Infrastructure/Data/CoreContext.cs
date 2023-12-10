@@ -87,7 +87,7 @@ public class CoreContext : DbContext, ICoreContext
             entity.HasKey(e => e.Id);
             entity
                 .HasOne(e => e.Loan)
-                .WithMany()
+                .WithMany(e => e.LoanPayments)
                 .HasForeignKey(e => e.LoanId);
         });
 

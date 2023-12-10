@@ -10,4 +10,6 @@ public class Loan
     public decimal Amount { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
+    
+    public virtual ICollection<LoanPayment> LoanPayments { get; set; }
 }
