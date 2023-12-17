@@ -9,8 +9,8 @@ namespace CRM.Trust.Application.Services.Persons;
 
 public interface IPersonService
 {
-    Task<Result> LoadPersonsList(List<PersonLoadModel> personList, CancellationToken cancellationToken);
-    Task<Result<List<PersonModel>>> GetPersonsList(CancellationToken cancellationToken);
+    Task<Result> LoadPersonsList(List<UploadPersonModel> personList, CancellationToken cancellationToken);
+    Task<Result<List<PersonDetailsModel>>> GetPersonsList(CancellationToken cancellationToken);
 }
 
 public class PersonService : IPersonService
@@ -24,12 +24,13 @@ public class PersonService : IPersonService
         _mapper = mapper;
     }
 
-    public async Task<Result> LoadPersonsList(List<PersonLoadModel> personList, CancellationToken cancellationToken)
+    public async Task<Result> LoadPersonsList(List<UploadPersonModel> personList, CancellationToken cancellationToken)
     {
         foreach (var personModel in personList)
         {
             var personId = Guid.NewGuid();
             var person = _mapper.Map<Person>(personModel);
+            
             person.Id = personId;
             await _coreContext.Persons.AddAsync(person, cancellationToken);
             
@@ -51,19 +52,20 @@ public class PersonService : IPersonService
         return Result.Ok();
     }
     
-    public async Task<Result<List<PersonModel>>> GetPersonsList(CancellationToken cancellationToken)
+    public async Task<Result<List<PersonDetailsModel>>> GetPersonsList(CancellationToken cancellationToken)
     {
         var persons = await _coreContext.Persons
             .AsNoTracking()
             .Include(e => e.Jobs)
             .Include(e => e.Contacts)
             .Include(e => e.Passports)
+            .Include(e => e.Loans)
             .ToListAsync(cancellationToken);
 
-        var personModels = new List<PersonModel>();
+        var personModels = new List<PersonDetailsModel>();
         foreach (var person in persons)
         {
-            var personModel = _mapper.Map<PersonModel>(person);
+            var personModel = _mapper.Map<PersonDetailsModel>(person);
             if (person.Jobs.Any(e => e.EndDate != null))
             {
                 var job = person.Jobs

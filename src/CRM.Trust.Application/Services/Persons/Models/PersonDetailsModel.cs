@@ -1,6 +1,6 @@
 ﻿namespace CRM.Trust.Application.Services.Persons.Models;
 
-public class PersonModel
+public class PersonDetailsModel
 {
     public Guid Id { get; set; }
     /// <summary>
@@ -31,4 +31,8 @@ public class PersonModel
     /// Контакты
     /// </summary>
     public List<PersonContactModel>? Contacts { get; set; }
+    /// <summary>
+    /// Кредиты
+    /// </summary>
+    public List<PersonLoanModel>? Loans { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CRM.Trust.Application.Services.Persons.Models;
 
-public class PersonLoadModel
+public class UploadPersonModel
 {
     /// <summary>
     /// Фамилия
@@ -30,4 +30,8 @@ public class PersonLoadModel
     /// Контакты
     /// </summary>
     public List<PersonContactModel>? Contacts { get; set; }
+    /// <summary>
+    /// Кредиты
+    /// </summary>
+    public List<PersonLoanModel>? Loans { get; set; }
 }

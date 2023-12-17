@@ -25,7 +25,7 @@ public class PersonController : ApiController
     }
     
     [HttpPost("LoadMany")]
-    public async Task<IActionResult> LoadPersonsList(List<PersonLoadModel> personList, CancellationToken cancellationToken)
+    public async Task<IActionResult> LoadPersonsList(List<UploadPersonModel> personList, CancellationToken cancellationToken)
     {
         var result = await _personService.LoadPersonsList(personList, cancellationToken);
         if (result.IsSuccess)

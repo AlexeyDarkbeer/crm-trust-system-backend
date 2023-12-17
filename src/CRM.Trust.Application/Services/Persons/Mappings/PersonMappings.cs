@@ -8,7 +8,22 @@ public class PersonMappings : Profile
 {
     public PersonMappings()
     {
-        CreateMap<Person, PersonModel>()
+        CreateMap<Person, UploadPersonModel>()
+            .ForMember(
+                dest => dest.LastName,
+                opt => opt.MapFrom(src => src.LastName))
+            .ForMember(
+                dest => dest.FirstName,
+                opt => opt.MapFrom(src => src.FirstName))
+            .ForMember(
+                dest => dest.MiddleName,
+                opt => opt.MapFrom(src => src.MiddleName))
+            .ForMember(
+                dest => dest.Gender,
+                opt => opt.MapFrom(src => src.Gender))
+            .ReverseMap();
+        
+        CreateMap<Person, PersonDetailsModel>()
             .ForMember(
                 dest => dest.Id,
                 opt => opt.MapFrom(src => src.Id))
@@ -24,39 +39,6 @@ public class PersonMappings : Profile
             .ForMember(
                 dest => dest.Gender,
                 opt => opt.MapFrom(src => src.Gender))
-            .ReverseMap();
-        
-        CreateMap<Person, PersonLoadModel>()
-            .ForMember(
-                dest => dest.LastName,
-                opt => opt.MapFrom(src => src.LastName))
-            .ForMember(
-                dest => dest.FirstName,
-                opt => opt.MapFrom(src => src.FirstName))
-            .ForMember(
-                dest => dest.MiddleName,
-                opt => opt.MapFrom(src => src.MiddleName))
-            .ForMember(
-                dest => dest.Gender,
-                opt => opt.MapFrom(src => src.Gender))
-            .ReverseMap();
-        
-        CreateMap<PersonJob, PersonJob>()
-            .ForMember(
-                dest => dest.Id,
-                opt => opt.MapFrom(src => src.Id))
-            .ForMember(
-                dest => dest.CompanyName,
-                opt => opt.MapFrom(src => src.CompanyName))
-            .ForMember(
-                dest => dest.Position,
-                opt => opt.MapFrom(src => src.Position))
-            .ForMember(
-                dest => dest.SalaryAmount,
-                opt => opt.MapFrom(src => src.SalaryAmount))
-            .ForMember(
-                dest => dest.StartDate,
-                opt => opt.MapFrom(src => src.StartDate))
             .ReverseMap();
         
         CreateMap<PersonJob, PersonJobModel>()
@@ -99,6 +81,24 @@ public class PersonMappings : Profile
             .ForMember(
                 dest => dest.PhoneNumber,
                 opt => opt.MapFrom(src => src.PhoneNumber))
+            .ReverseMap();
+        
+        CreateMap<Loan, PersonLoanModel>()
+            .ForMember(
+                dest => dest.LoanId,
+                opt => opt.MapFrom(src => src.LoanId))
+            .ForMember(
+                dest => dest.CreditType,
+                opt => opt.MapFrom(src => src.CreditType))
+            .ForMember(
+                dest => dest.Amount,
+                opt => opt.MapFrom(src => src.Amount))
+            .ForMember(
+                dest => dest.StartDate,
+                opt => opt.MapFrom(src => src.StartDate))
+            .ForMember(
+                dest => dest.EndDate,
+                opt => opt.MapFrom(src => src.EndDate))
             .ReverseMap();
     }
 }
