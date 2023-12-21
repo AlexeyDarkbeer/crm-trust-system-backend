@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CRM.Trust.Application.Data;
+using CRM.Trust.Application.HttpClients;
 using CRM.Trust.Application.Services.Persons.Models;
 using CRM.Trust.Domain.Core;
 using FluentResults;
@@ -11,17 +12,20 @@ public interface IPersonService
 {
     Task<Result> LoadPersonsList(List<UploadPersonModel> personList, CancellationToken cancellationToken);
     Task<Result<List<PersonDetailsModel>>> GetPersonsList(CancellationToken cancellationToken);
+    Task<Result<List<PersonDetailClusteredModel>>> GetPersonClusteredList(CancellationToken cancellationToken);
 }
 
 public class PersonService : IPersonService
 {
     private readonly IMapper _mapper;
     private readonly ICoreContext _coreContext;
+    private readonly IMathCoreHttpClient _mathCoreHttpClient;
 
-    public PersonService(ICoreContext coreContext, IMapper mapper)
+    public PersonService(ICoreContext coreContext, IMapper mapper, IMathCoreHttpClient mathCoreHttpClient)
     {
         _coreContext = coreContext;
         _mapper = mapper;
+        _mathCoreHttpClient = mathCoreHttpClient;
     }
 
     public async Task<Result> LoadPersonsList(List<UploadPersonModel> personList, CancellationToken cancellationToken)
@@ -54,6 +58,27 @@ public class PersonService : IPersonService
     
     public async Task<Result<List<PersonDetailsModel>>> GetPersonsList(CancellationToken cancellationToken)
     {
+        var data = await GetPersonDataList(cancellationToken);
+        return Result.Ok(data);
+    }
+
+    public async Task<Result<List<PersonDetailClusteredModel>>> GetPersonClusteredList(CancellationToken cancellationToken)
+    {
+        var data = await GetPersonDataList(cancellationToken);
+        var clusters = await _mathCoreHttpClient.GetMathData(data, cancellationToken);
+        var clusteredData = _mapper.Map<List<PersonDetailsModel>, List<PersonDetailClusteredModel>>(data);
+
+        int i = 0;
+        foreach (var model in clusteredData)
+        {
+            model.Cluster = clusters.Clusters[i];
+            i++;
+        }
+        return clusteredData;
+    }
+    
+    private async Task<List<PersonDetailsModel>> GetPersonDataList(CancellationToken cancellationToken)
+    {
         var persons = await _coreContext.Persons
             .AsNoTracking()
             .Include(e => e.Jobs)
@@ -66,10 +91,10 @@ public class PersonService : IPersonService
         foreach (var person in persons)
         {
             var personModel = _mapper.Map<PersonDetailsModel>(person);
-            if (person.Jobs.Any(e => e.EndDate != null))
+            if (person.Jobs.Any(e => e.EndDate == null))
             {
                 var job = person.Jobs
-                    .First(e => e.EndDate != null);
+                    .First(e => e.EndDate == null);
                 personModel.ActualJob = _mapper.Map<PersonJobModel>(job);
             }
             if (person.Passports.Any())
@@ -79,6 +104,6 @@ public class PersonService : IPersonService
             }
             personModels.Add(personModel);
         }
-        return Result.Ok(personModels);
+        return personModels;
     }
 }

@@ -18,7 +18,7 @@ public static class HttpClientsConfigurationExtensions
         services.AddHttpClient(MathCoreHttpClientSettings.HTTP_CLIENT_NAME)
             .ConfigureHttpClient(httpClient =>
             {
-                httpClient.BaseAddress = new Uri(settings.Url);
+                httpClient.BaseAddress = new Uri(settings.Uri);
             })
             .SetHandlerLifetime(TimeSpan.FromMinutes(5))
             .AddPolicyHandler(GetRetryPolicy());

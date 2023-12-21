@@ -8,5 +8,5 @@ public class MathCoreHttpClientSettings
     public const string HTTP_CLIENT_NAME = "MathCore";
     
     [Required, Url]
-    public string Url { get; set; }
+    public string Uri { get; set; }
 }

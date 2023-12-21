@@ -7,7 +7,7 @@ namespace CRM.Trust.WepApi.Controllers;
 public class PersonController : ApiController
 {
     private readonly IPersonService _personService;
-
+    
     public PersonController(IPersonService personService)
     {
         _personService = personService;
@@ -17,6 +17,17 @@ public class PersonController : ApiController
     public async Task<IActionResult> GetPersonList(CancellationToken cancellationToken)
     {
         var personListResult = await _personService.GetPersonsList(cancellationToken);
+        if (personListResult.IsSuccess)
+        {
+            return Ok(personListResult.Value);
+        }
+        return BadRequest(personListResult.Errors.FirstOrDefault());
+    }
+    
+    [HttpGet("GetPersonClusters")]
+    public async Task<IActionResult> GetPersonClusters(CancellationToken cancellationToken)
+    {
+        var personListResult = await _personService.GetPersonClusteredList(cancellationToken);
         if (personListResult.IsSuccess)
         {
             return Ok(personListResult.Value);

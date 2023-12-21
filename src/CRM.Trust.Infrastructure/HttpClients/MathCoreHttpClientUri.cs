@@ -2,5 +2,5 @@
 
 public static class MathCoreHttpClientUri
 {
-    public const string GetMathData = "get-math-data";
+    public const string ClustersData = "/cluster";
 }

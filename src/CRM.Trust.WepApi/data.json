@@ -1,0 +1,206 @@
+﻿[
+  {
+    "lastName": "Иванов",
+    "firstName": "Иван",
+    "middleName": "Иванович",
+    "gender": "Мужской",
+    "actualJob": {
+      "companyName": "ООО Работа",
+      "position": "Инженер",
+      "salaryAmount": 50000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "1234",
+      "number": "567890",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "123-456",
+      "birthDate": "1990-01-15T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456789"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "ABC123",
+        "creditType": "Ипотека",
+        "amount": 2000000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2028-12-21T14:42:16.191Z"
+      }
+    ]
+  },
+  {
+    "lastName": "Петрова",
+    "firstName": "Мария",
+    "middleName": "Сергеевна",
+    "gender": "Женский",
+    "actualJob": {
+      "companyName": "ООО Прогресс",
+      "position": "Менеджер",
+      "salaryAmount": 60000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "4321",
+      "number": "098765",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "789-012",
+      "birthDate": "1985-07-10T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456788"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "XYZ456",
+        "creditType": "Автокредит",
+        "amount": 1000000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2025-12-21T14:42:16.191Z"
+      }
+    ]
+  },
+  {
+    "lastName": "Петрова",
+    "firstName": "Елена",
+    "middleName": "Андреевна",
+    "gender": "Женский",
+    "actualJob": {
+      "companyName": "ООО Технологии",
+      "position": "ИТ-специалист",
+      "salaryAmount": 70000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "9876",
+      "number": "543210",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "654-321",
+      "birthDate": "1985-12-10T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456786"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "EDU789",
+        "creditType": "Образовательный кредит",
+        "amount": 150000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2025-12-21T14:42:16.191Z"
+      }
+    ]
+  },
+  {
+    "lastName": "Иванов",
+    "firstName": "Алексей",
+    "middleName": "Алексеевич",
+    "gender": "Мужской",
+    "actualJob": {
+      "companyName": "ИП СтройМастер",
+      "position": "Строитель",
+      "salaryAmount": 60000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "1234",
+      "number": "567890",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "123-456",
+      "birthDate": "1992-06-15T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456785"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "GHI123",
+        "creditType": "Автокредит",
+        "amount": 1500000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2026-12-21T14:42:16.191Z"
+      }
+    ]
+  },
+  {
+    "lastName": "Сидорова",
+    "firstName": "Наталья",
+    "middleName": "Петровна",
+    "gender": "Женский",
+    "actualJob": {
+      "companyName": "ООО Медицинский Центр",
+      "position": "Врач-терапевт",
+      "salaryAmount": 70000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "9876",
+      "number": "543210",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "654-321",
+      "birthDate": "1980-02-25T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456784"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "JKL456",
+        "creditType": "Образовательный кредит",
+        "amount": 500000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2025-12-21T14:42:16.191Z"
+      }
+    ]
+  },
+  {
+    "lastName": "Николаев",
+    "firstName": "Валентин",
+    "middleName": "Иванович",
+    "gender": "Мужской",
+    "actualJob": {
+      "companyName": "ЗАО ЭнергоСтрой",
+      "position": "Электромонтёр",
+      "salaryAmount": 55000,
+      "startDate": "2023-12-21T14:42:16.191Z"
+    },
+    "passport": {
+      "series": "4321",
+      "number": "876543",
+      "issuedBy": "Отделением УФМС России",
+      "issueDate": "2023-12-21T14:42:16.191Z",
+      "departmentNumber": "987-654",
+      "birthDate": "1987-11-10T00:00:00Z"
+    },
+    "contacts": [
+      {
+        "phoneNumber": "+79123456783"
+      }
+    ],
+    "loans": [
+      {
+        "loanId": "MNO789",
+        "creditType": "Потребительский кредит",
+        "amount": 700000,
+        "startDate": "2023-12-21T14:42:16.191Z",
+        "endDate": "2024-12-21T14:42:16.191Z"
+      }
+    ]
+  }
+]

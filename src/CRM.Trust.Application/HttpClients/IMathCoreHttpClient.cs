@@ -1,6 +1,8 @@
-﻿namespace CRM.Trust.Application.HttpClients;
+﻿using CRM.Trust.Application.Services.Persons.Models;
+
+namespace CRM.Trust.Application.HttpClients;
 
 public interface IMathCoreHttpClient
 {
-    Task GetMathData(CancellationToken cancellationToken);
+    Task<PersonClustersResponse?> GetMathData(List<PersonDetailsModel> data, CancellationToken cancellationToken);
 }

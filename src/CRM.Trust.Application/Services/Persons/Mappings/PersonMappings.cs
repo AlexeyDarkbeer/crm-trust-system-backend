@@ -41,6 +41,9 @@ public class PersonMappings : Profile
                 opt => opt.MapFrom(src => src.Gender))
             .ReverseMap();
         
+        CreateMap<PersonDetailsModel, PersonDetailClusteredModel>()
+            .ReverseMap();
+        
         CreateMap<PersonJob, PersonJobModel>()
             .ForMember(
                 dest => dest.CompanyName,
